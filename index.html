@@ -3,27 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freliz Official — Сайт разработчика</title>
+    <title>Freliz Official — Официальный сайт</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Ubuntu:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
 
         :root {
-            --bg-color: #0f111a;
-            --card-bg: #171a26;
-            --nav-bg: #11131f;
-            --accent-blue: #3b82f6;
-            --accent-green: #22c55e;
+            --bg-color: #0b0f19;
+            /* Настройки жидкого стекла */
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --blur-effect: blur(16px);
+            
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
             
-            /* Цвета для соцсетей */
-            --tg-color: #24A1DE;
-            --yt-color: #FF0000;
-            --tt-color: #00f2fe;
+            /* Цвета кнопок и акцентов */
+            --color-blue: #3b82f6;
+            --color-cyan: #06b6d4;
+            --color-purple: #a855f7;
+            --color-pink: #ec4899;
+            --color-orange: #f97316;
+            --color-green: #22c55e;
         }
 
         body {
             background-color: var(--bg-color);
+            /* Красивый размытый фон за стеклом */
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(59, 130, 246, 0.15) 0px, transparent 45%),
+                radial-gradient(at 90% 80%, rgba(168, 85, 247, 0.15) 0px, transparent 45%),
+                radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.05) 0px, transparent 50%);
+            background-attachment: fixed;
             color: var(--text-main);
             font-family: 'Ubuntu', sans-serif;
             margin: 0;
@@ -32,304 +42,279 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-        }
-
-        /* Навигация (Главное меню) */
-        nav {
-            width: 100%;
-            background-color: var(--nav-bg);
-            border-bottom: 1px solid #262936;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 12px 20px;
             box-sizing: border-box;
-            display: flex;
-            justify-content: center;
         }
 
-        .nav-container {
+        /* Шапка сайта */
+        header {
             width: 100%;
             max-width: 1000px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: var(--blur-effect);
+            -webkit-backdrop-filter: var(--blur-effect);
+            padding: 15px 25px;
+            border-radius: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            margin-top: 20px;
+            box-sizing: border-box;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
-        .nav-brand {
-            font-family: 'Press Start 2P', cursive;
-            color: #58a6ff;
-            font-size: 16px;
-            text-decoration: none;
-            text-shadow: 2px 2px 0px #000;
+        .brand {
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: 1px;
+            color: #fff;
+            background: linear-gradient(45deg, #3b82f6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .nav-menu {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .nav-menu a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-menu a:hover {
-            color: #58a6ff;
-        }
-
-        /* Переключатель языков */
         .lang-switcher {
             display: flex;
-            gap: 8px;
-            background: #202436;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: bold;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .lang-switcher span {
             cursor: pointer;
             color: var(--text-muted);
+            transition: color 0.2s;
         }
 
         .lang-switcher span.active {
-            color: #58a6ff;
+            color: #3b82f6;
+            border-bottom: 2px solid #3b82f6;
         }
 
-        /* Кнопки соцсетей */
-        .btn-tg { color: var(--tg-color) !important; font-weight: bold; }
-        .btn-yt { color: var(--yt-color) !important; font-weight: bold; }
-        .btn-tt { color: var(--tt-color) !important; font-weight: bold; }
-
-        /* Главный блок приветствия */
-        .welcome-section {
+        /* Главная сетка */
+        .main-layout {
             width: 100%;
-            max-width: 800px;
-            text-align: center;
-            padding: 40px 20px;
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            padding: 25px;
             box-sizing: border-box;
-            border-bottom: 1px solid #262936;
         }
 
-        .welcome-section h1 {
-            font-family: 'Press Start 2P', cursive;
-            color: #58a6ff;
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 0px #000;
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .welcome-section p {
-            color: var(--text-muted);
-            font-size: 16px;
-            line-height: 1.6;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        /* Контент сайта */
-        .main-content {
-            width: 100%;
-            max-width: 550px;
-            padding: 30px 20px;
-            box-sizing: border-box;
+        /* Левая колонка (Кнопки и навигация) */
+        .left-column {
             display: flex;
             flex-direction: column;
-            gap: 35px;
+            gap: 16px;
         }
 
-        .section-title {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 14px;
-            color: #58a6ff;
-            margin-bottom: 15px;
-            border-left: 4px solid var(--accent-blue);
-            padding-left: 10px;
+        /* Правая колонка (Инфо, Кошка, Анонсы) */
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-            border: 1px solid #262936;
-            transition: transform 0.2s;
-            margin-bottom: 20px;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-        }
-
-        .card-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-bottom: 1px solid #262936;
-            background-color: #0a0b10;
-        }
-
-        .card-content {
+        /* Базовый стиль для закругленных стеклянных карточек/кнопок */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: var(--blur-effect);
+            -webkit-backdrop-filter: var(--blur-effect);
+            border-radius: 20px;
             padding: 20px;
-        }
-
-        .card-content h3 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 12px;
-            margin-top: 0;
-            margin-bottom: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: var(--text-main);
             display: flex;
             align-items: center;
-            justify-content: space-between;
-        }
-
-        .version-badge {
-            font-family: 'Ubuntu', sans-serif;
-            font-size: 11px;
-            background-color: #262936;
-            padding: 2px 8px;
-            border-radius: 6px;
-            color: var(--accent-blue);
-            font-weight: bold;
-        }
-
-        .version-badge.beta {
-            color: #f59e0b;
-        }
-
-        .card-content p {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            text-align: center;
-            background-color: var(--accent-green);
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 8px;
+            gap: 18px;
             box-sizing: border-box;
-            font-size: 15px;
-            transition: background 0.2s;
         }
 
-        .btn:hover {
-            background-color: #16a34a;
+        /* Стили для кнопок-ссылок при наведении */
+        a.glass-card:hover {
+            transform: translateY(-3px) scale(1.01);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
         }
 
-        .btn.disabled {
-            background-color: #2d3142;
-            color: #6b7280;
-            cursor: not-allowed;
-            pointer-events: none;
+        /* Иконки внутри кнопок */
+        .icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .icon-wrapper img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .card-text h3 {
+            margin: 0 0 4px 0;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .card-text p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Разноцветные неоновые свечения с левой стороны для красоты */
+        .border-blue { border-left: 4px solid var(--color-blue); }
+        .border-cyan { border-left: 4px solid var(--color-cyan); }
+        .border-purple { border-left: 4px solid var(--color-purple); }
+        .border-pink { border-left: 4px solid var(--color-pink); }
+        .border-orange { border-left: 4px solid var(--color-orange); }
+
+        /* Специальный блок для кошачьих новостей */
+        .cat-box {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.05), rgba(236, 72, 153, 0.03));
+            border-left: 4px solid var(--color-orange);
+        }
+
+        /* Стильный блок анонсов */
+        .announcement-box {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), rgba(6, 182, 212, 0.03));
+            border-left: 4px solid var(--color-green);
+        }
+
+        .announcement-box .icon-wrapper {
+            color: var(--color-green);
+        }
+
+        /* Контейнер для встроенного виджета Telegram */
+        .tg-widget-container {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         }
 
         footer {
-            text-align: center;
-            padding: 30px;
-            color: #4b5563;
-            font-size: 10px;
-            font-family: 'Press Start 2P', cursive;
             margin-top: auto;
-            width: 100%;
-            border-top: 1px solid #262936;
-            background-color: var(--nav-bg);
+            padding: 25px;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="nav-brand">FRELIZ.OFFICIAL</a>
-            
-            <div class="nav-menu">
-                <a href="#programs">Программы</a>
-                <a href="#builds">Сборки</a>
-                <a href="https://t.me/frelzsborka" target="_blank" class="btn-tg">Telegram</a>
-                <a href="http://youtube.com/0" target="_blank" class="btn-yt">YouTube</a>
-                <a href="https://www.tiktok.com/@fluxionnew?_r=1&_t=ZS-96OYTNaANUa" target="_blank" class="btn-tt">TikTok</a>
-            </div>
-
-            <div class="lang-switcher">
-                <span class="active">RU</span>
-                <span>UK</span>
-                <span>EN</span>
-            </div>
+    <header>
+        <div class="brand">Freliz Official</div>
+        <div class="lang-switcher">
+            <span class="active">RU</span>
+            <span>UK</span>
+            <span>EN</span>
         </div>
-    </nav>
+    </header>
 
-    <div class="welcome-section">
-        <h1>Добро пожаловать на сайт Freliz!</h1>
-        <p>Это официальный сайт-хаб моих проектов. Здесь вы можете скачать авторские утилиты, софт для оптимизации операционной системы, кастомные легковесные сборки Windows и найти ссылки на мои актуальные социальные сети.</p>
-    </div>
-
-    <div class="main-content">
-
-        <div id="programs">
-            <div class="section-title">Скачать программы</div>
-
-            <div class="card">
-                <div style="width:100%; height:150px; display:flex; align-items:center; justify-content:center; background:#11131c; color:#4b5563; font-family:'Press Start 2P'; font-size:10px;">
-                    [ Скриншот Блокиратора ]
+    <div class="main-layout">
+        
+        <div class="left-column">
+            
+            <a href="#builds-info" class="glass-card border-blue">
+                <div class="icon-wrapper" style="color: var(--color-blue);">💿</div>
+                <div class="card-text">
+                    <h3>Сборки Фрелиза</h3>
+                    <p>Кастомные и легковесные оптимизированные ISO-образы систем.</p>
                 </div>
-                <div class="card-content">
-                    <h3>Блокиратор Яндекса <span class="version-badge">v1.0</span></h3>
-                    <p>Утилита для полной блокировки сервисов, автоматических установщиков и скрытой телеметрии Яндекса в системе через глубокую перенастройку системного реестра Windows.</p>
-                    <a href="ССЫЛКА_НА_БЛОКИРАТОР.EXE" class="btn" download>Скачать Блокиратор</a>
-                </div>
-            </div>
+            </a>
 
-            <div class="card">
-                <img src="32391.jpg" alt="AnimeFlash v1.0" class="card-image">
-                <div class="card-content">
-                    <h3>AnimeFlash <span class="version-badge">v1.0</span></h3>
-                    <p>Быстрый, легкий и стильный софт для записи ISO-образов систем на USB-накопители. Твой личный флешер в красивых неоновых фиолетово-розовых тонах — лучше чем Rufus!</p>
-                    <a href="ССЫЛКА_НА_ANIMEFLASH.EXE" class="btn" download>Скачать AnimeFlash</a>
+            <a href="https://t.me/frelzsborka" target="_blank" class="glass-card border-purple">
+                <div class="icon-wrapper">
+                    <img src="32398.jpg" alt="FrelizBlock">
                 </div>
-            </div>
+                <div class="card-text">
+                    <h3>Проги от Фрелиза</h3>
+                    <p>FrelizBlock (Блокиратор Яндекса), AnimeFlash, FluxionTweaker.</p>
+                </div>
+            </a>
 
-            <div class="card">
-                <img src="32395.jpg" alt="FluxionTweaker v3.0" class="card-image">
-                <div class="card-content">
-                    <h3>FluxionTweaker <span class="version-badge beta">v3.0 Beta</span></h3>
-                    <p>Короче я рукожоп и я не смог сделать жидкое стекло. Программа пока на бета тесте у меня, и у меня слетела винда для того чтобы доделать🫪 я хз. Но задумка топовая: макс FPS, отключение лишних служб и чистка телеметрии.</p>
-                    <a href="#" class="btn disabled">В разработке (Слетела винда 🫪)</a>
+            <a href="https://t.me/frelzsborka" target="_blank" class="glass-card border-cyan">
+                <div class="icon-wrapper" style="color: var(--color-cyan);">✈️</div>
+                <div class="card-text">
+                    <h3>Телеграмм канал</h3>
+                    <p>Официальное сообщество, обсуждения и апдейты софта.</p>
                 </div>
-            </div>
+            </a>
+
+            <a href="https://www.tiktok.com/@fluxionnew?_r=1&_t=ZS-96OYTNaANUa" target="_blank" class="glass-card border-pink">
+                <div class="icon-wrapper" style="color: var(--color-pink);">🎵</div>
+                <div class="card-text">
+                    <h3>Тикток аккаунт</h3>
+                    <p>Короткие видео, эдиты и демонстрация работы твикеров.</p>
+                </div>
+            </a>
+
+            <a href="http://googleusercontent.com/youtube.com/2" target="_blank" class="glass-card border-orange" style="border-left-color: #ef4444;">
+                <div class="icon-wrapper" style="color: #ef4444;">▶️</div>
+                <div class="card-text">
+                    <h3>YouTube канал</h3>
+                    <p>Техноблогинг, подробные гайды и обзоры оптимизаций.</p>
+                </div>
+            </a>
+
         </div>
 
-        <div id="builds">
-            <div class="section-title">Сборки Windows от Freliz</div>
+        <div class="right-column">
             
-            <div class="card">
-                <div class="card-content">
-                    <h3>FrelizOS (Tiny / LTSC) <span class="version-badge beta">В планах</span></h3>
-                    <p>Мои будущие кастомные, максимально облегченные и вырезанные сборки Windows для слабых ПК, оптимизированные под максимальный FPS в играх и стабильный отклик системы без лагов.</p>
-                    <a href="#" class="btn disabled">Скоро появится</a>
+            <div class="glass-card cat-box">
+                <div class="icon-wrapper" style="color: var(--color-orange);">🐾</div>
+                <div class="card-text">
+                    <h3>Актуалочка про кошку</h3>
+                    <p>Моя любимая кошка Пумочка всегда сидит рядом, когда я за компом. Она меня очень сильно любит! 🐱</p>
                 </div>
             </div>
+
+            <div id="builds-info" class="glass-card announcement-box">
+                <div class="icon-wrapper">📢</div>
+                <div class="card-text">
+                    <h3>Анонсы</h3>
+                    <p>Сейчас я активно чиню и довожу до ума свои программы (FluxionTweaker и AnimeFlash). А кастомные сборки Windows планируются ориентировочно <strong>где-то летом</strong>!</p>
+                </div>
+            </div>
+
+            <div class="tg-widget-container">
+                <script async src="https://telegram.org/js/telegram-widget.js?22" 
+                        data-telegram-post="frelzsborka/1" 
+                        data-width="100%" 
+                        data-userpic="true" 
+                        data-dark="1" 
+                        data-dark-color="3b82f6">
+                </script>
+            </div>
+
         </div>
 
     </div>
 
     <footer>
-        &copy; 2026 Freliz Official — Все права защищены.
+        &copy; 2026 Freliz Official. Все права защищены.
     </footer>
 
 </body>
