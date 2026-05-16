@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freliz Official</title>
+    <title>Freliz Official — Сайт разработчика</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Ubuntu:wght@400;500;700&display=swap');
 
         :root {
             --bg-color: #0f111a;
             --card-bg: #171a26;
+            --nav-bg: #11131f;
             --accent-blue: #3b82f6;
             --accent-green: #22c55e;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
+            
+            /* Цвета для соцсетей */
+            --tg-color: #24A1DE;
+            --yt-color: #FF0000;
+            --tt-color: #00f2fe;
         }
 
         body {
@@ -28,36 +34,126 @@
             min-height: 100vh;
         }
 
-        header {
+        /* Навигация (Главное меню) */
+        nav {
+            width: 100%;
+            background-color: var(--nav-bg);
+            border-bottom: 1px solid #262936;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-brand {
+            font-family: 'Press Start 2P', cursive;
+            color: #58a6ff;
+            font-size: 16px;
+            text-decoration: none;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-menu a:hover {
+            color: #58a6ff;
+        }
+
+        /* Переключатель языков */
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            background: #202436;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .lang-switcher span {
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .lang-switcher span.active {
+            color: #58a6ff;
+        }
+
+        /* Кнопки соцсетей */
+        .btn-tg { color: var(--tg-color) !important; font-weight: bold; }
+        .btn-yt { color: var(--yt-color) !important; font-weight: bold; }
+        .btn-tt { color: var(--tt-color) !important; font-weight: bold; }
+
+        /* Главный блок приветствия */
+        .welcome-section {
             width: 100%;
             max-width: 800px;
             text-align: center;
-            padding: 40px 20px 20px 20px;
+            padding: 40px 20px;
             box-sizing: border-box;
+            border-bottom: 1px solid #262936;
         }
 
-        header h1 {
+        .welcome-section h1 {
             font-family: 'Press Start 2P', cursive;
             color: #58a6ff;
             font-size: 24px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-shadow: 3px 3px 0px #000;
         }
 
-        header p {
+        .welcome-section p {
             color: var(--text-muted);
             font-size: 16px;
-            margin: 0;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: 0 auto;
         }
 
-        .container {
+        /* Контент сайта */
+        .main-content {
             width: 100%;
-            max-width: 500px;
-            padding: 20px;
+            max-width: 550px;
+            padding: 30px 20px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 35px;
+        }
+
+        .section-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            color: #58a6ff;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 10px;
         }
 
         .card {
@@ -67,6 +163,7 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
             border: 1px solid #262936;
             transition: transform 0.2s;
+            margin-bottom: 20px;
         }
 
         .card:hover {
@@ -87,7 +184,7 @@
 
         .card-content h3 {
             font-family: 'Press Start 2P', cursive;
-            font-size: 13px;
+            font-size: 12px;
             margin-top: 0;
             margin-bottom: 12px;
             display: flex;
@@ -148,52 +245,91 @@
             color: #4b5563;
             font-size: 10px;
             font-family: 'Press Start 2P', cursive;
-            margin-top: 40px;
+            margin-top: auto;
+            width: 100%;
+            border-top: 1px solid #262936;
+            background-color: var(--nav-bg);
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Freliz Official</h1>
-        <p>Добро пожаловать! Здесь собраны мои утилиты и проекты.</p>
-    </header>
-
-    <div class="container">
-
-        <div class="card">
-            <div style="width:100%; height:150px; display:flex; align-items:center; justify-content:center; background:#11131c; color:#4b5563; font-family:'Press Start 2P'; font-size:10px;">
-                [ Место для скриншота Блокиратора ]
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-brand">FRELIZ.OFFICIAL</a>
+            
+            <div class="nav-menu">
+                <a href="#programs">Программы</a>
+                <a href="#builds">Сборки</a>
+                <a href="https://t.me/frelzsborka" target="_blank" class="btn-tg">Telegram</a>
+                <a href="http://youtube.com/0" target="_blank" class="btn-yt">YouTube</a>
+                <a href="https://www.tiktok.com/@fluxionnew?_r=1&_t=ZS-96OYTNaANUa" target="_blank" class="btn-tt">TikTok</a>
             </div>
-            <div class="card-content">
-                <h3>Блокиратор Яндекса <span class="version-badge">v1.0</span></h3>
-                <p>Утилита для полной блокировки сервисов и процессов Яндекса в системе. Позволяет навсегда избавиться от нежелательного софта, автоматических установщиков и телеметрии через системный реестр Windows.</p>
-                <a href="ССЫЛКА_НА_БЛОКИРАТОР.EXE" class="btn" download>Скачать</a>
+
+            <div class="lang-switcher">
+                <span class="active">RU</span>
+                <span>UK</span>
+                <span>EN</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="welcome-section">
+        <h1>Добро пожаловать на сайт Freliz!</h1>
+        <p>Это официальный сайт-хаб моих проектов. Здесь вы можете скачать авторские утилиты, софт для оптимизации операционной системы, кастомные легковесные сборки Windows и найти ссылки на мои актуальные социальные сети.</p>
+    </div>
+
+    <div class="main-content">
+
+        <div id="programs">
+            <div class="section-title">Скачать программы</div>
+
+            <div class="card">
+                <div style="width:100%; height:150px; display:flex; align-items:center; justify-content:center; background:#11131c; color:#4b5563; font-family:'Press Start 2P'; font-size:10px;">
+                    [ Скриншот Блокиратора ]
+                </div>
+                <div class="card-content">
+                    <h3>Блокиратор Яндекса <span class="version-badge">v1.0</span></h3>
+                    <p>Утилита для полной блокировки сервисов, автоматических установщиков и скрытой телеметрии Яндекса в системе через глубокую перенастройку системного реестра Windows.</p>
+                    <a href="ССЫЛКА_НА_БЛОКИРАТОР.EXE" class="btn" download>Скачать Блокиратор</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="32391.jpg" alt="AnimeFlash v1.0" class="card-image">
+                <div class="card-content">
+                    <h3>AnimeFlash <span class="version-badge">v1.0</span></h3>
+                    <p>Быстрый, легкий и стильный софт для записи ISO-образов систем на USB-накопители. Твой личный флешер в красивых неоновых фиолетово-розовых тонах — лучше чем Rufus!</p>
+                    <a href="ССЫЛКА_НА_ANIMEFLASH.EXE" class="btn" download>Скачать AnimeFlash</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="32395.jpg" alt="FluxionTweaker v3.0" class="card-image">
+                <div class="card-content">
+                    <h3>FluxionTweaker <span class="version-badge beta">v3.0 Beta</span></h3>
+                    <p>Короче я рукожоп и я не смог сделать жидкое стекло. Программа пока на бета тесте у меня, и у меня слетела винда для того чтобы доделать🫪 я хз. Но задумка топовая: макс FPS, отключение лишних служб и чистка телеметрии.</p>
+                    <a href="#" class="btn disabled">В разработке (Слетела винда 🫪)</a>
+                </div>
             </div>
         </div>
 
-        <div class="card">
-            <img src="32391.jpg" alt="AnimeFlash v1.0" class="card-image">
-            <div class="card-content">
-                <h3>AnimeFlash <span class="version-badge">v1.0</span></h3>
-                <p>Интересный проект, связанный с аниме тематикой. Быстрый, легкий и удобный софт для записи ISO-образов на флешки. Твой личный стильный флешер в фиолетово-розовых тонах — лучше чем Rufus!</p>
-                <a href="ССЫЛКА_НА_ANIMEFLASH.EXE" class="btn" download>Скачать</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="32395.jpg" alt="FluxionTweaker v3.0" class="card-image">
-            <div class="card-content">
-                <h3>FluxionTweaker <span class="version-badge beta">v3.0 Beta</span></h3>
-                <p>Короче я рукожоп и я не смог сделать жидкое стекло. Программа пока на бета тесте у меня, и у меня слетела винда для того чтобы доделать🫪 я хз. Но задумка топовая: макс FPS, отключение лишних служб, чистка телеметрии и настройка Windows на максимальное быстродействие.</p>
-                <a href="#" class="btn disabled">В разработке (Слетела винда 🫪)</a>
+        <div id="builds">
+            <div class="section-title">Сборки Windows от Freliz</div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>FrelizOS (Tiny / LTSC) <span class="version-badge beta">В планах</span></h3>
+                    <p>Мои будущие кастомные, максимально облегченные и вырезанные сборки Windows для слабых ПК, оптимизированные под максимальный FPS в играх и стабильный отклик системы без лагов.</p>
+                    <a href="#" class="btn disabled">Скоро появится</a>
+                </div>
             </div>
         </div>
 
     </div>
 
     <footer>
-        &copy; 2026 FRELIZ
+        &copy; 2026 Freliz Official — Все права защищены.
     </footer>
 
 </body>
