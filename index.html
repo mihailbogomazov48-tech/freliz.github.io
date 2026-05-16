@@ -5,35 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freliz Official — Официальный сайт</title>
     <style>
+        /* Подключаем красивый, ровный шрифт Ubuntu вместо пиксельного */
         @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
 
         :root {
-            --bg-color: #0b0f19;
-            /* Настройки жидкого стекла */
-            --glass-bg: rgba(255, 255, 255, 0.04);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --blur-effect: blur(16px);
-            
+            --bg-color: #0f111a;
+            --card-bg: #171a26;
+            --nav-bg: #11131f;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-orange: #f97316;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
             
-            /* Цвета кнопок и акцентов */
-            --color-blue: #3b82f6;
-            --color-cyan: #06b6d4;
-            --color-purple: #a855f7;
-            --color-pink: #ec4899;
-            --color-orange: #f97316;
-            --color-green: #22c55e;
+            /* Цвета для соцсетей */
+            --tg-color: #24A1DE;
+            --yt-color: #FF0000;
+            --tt-color: #00f2fe;
         }
 
         body {
             background-color: var(--bg-color);
-            /* Красивый размытый фон за стеклом */
-            background-image: 
-                radial-gradient(at 10% 10%, rgba(59, 130, 246, 0.15) 0px, transparent 45%),
-                radial-gradient(at 90% 80%, rgba(168, 85, 247, 0.15) 0px, transparent 45%),
-                radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.05) 0px, transparent 50%);
-            background-attachment: fixed;
             color: var(--text-main);
             font-family: 'Ubuntu', sans-serif;
             margin: 0;
@@ -42,280 +34,341 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            box-sizing: border-box;
         }
 
-        /* Шапка сайта */
-        header {
+        /* Навигация как в первой версии */
+        nav {
+            width: 100%;
+            background-color: var(--nav-bg);
+            border-bottom: 1px solid #262936;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-container {
             width: 100%;
             max-width: 1000px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: var(--blur-effect);
-            -webkit-backdrop-filter: var(--blur-effect);
-            padding: 15px 25px;
-            border-radius: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 20px;
-            box-sizing: border-box;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .brand {
+        .nav-brand {
             font-weight: 700;
-            font-size: 20px;
-            letter-spacing: 1px;
-            color: #fff;
-            background: linear-gradient(45deg, #3b82f6, #06b6d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 18px;
+            color: #58a6ff;
+            text-decoration: none;
+            letter-spacing: 0.5px;
         }
 
-        .lang-switcher {
+        .nav-menu {
             display: flex;
-            gap: 12px;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            color: var(--text-main);
+            text-decoration: none;
             font-size: 14px;
             font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-menu a:hover {
+            color: #58a6ff;
+        }
+
+        /* Выбор языка */
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            background: #202436;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
         }
 
         .lang-switcher span {
             cursor: pointer;
             color: var(--text-muted);
-            transition: color 0.2s;
         }
 
         .lang-switcher span.active {
-            color: #3b82f6;
-            border-bottom: 2px solid #3b82f6;
+            color: #58a6ff;
         }
 
-        /* Главная сетка */
-        .main-layout {
+        .btn-tg { color: var(--tg-color) !important; font-weight: bold; }
+        .btn-yt { color: var(--yt-color) !important; font-weight: bold; }
+        .btn-tt { color: var(--tt-color) !important; font-weight: bold; }
+
+        /* Главный блок приветствия */
+        .welcome-section {
             width: 100%;
-            max-width: 1000px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            padding: 25px;
+            max-width: 800px;
+            text-align: center;
+            padding: 40px 20px;
             box-sizing: border-box;
+            border-bottom: 1px solid #262936;
         }
 
-        @media (max-width: 768px) {
-            .main-layout {
-                grid-template-columns: 1fr;
-            }
+        .welcome-section h1 {
+            color: #58a6ff;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
 
-        /* Левая колонка (Кнопки и навигация) */
-        .left-column {
+        .welcome-section p {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Контент сайта - строгая красивая колонка */
+        .main-content {
+            width: 100%;
+            max-width: 550px;
+            padding: 30px 20px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 30px;
         }
 
-        /* Правая колонка (Инфо, Кошка, Анонсы) */
-        .right-column {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #58a6ff;
+            margin-bottom: 5px;
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 10px;
+            letter-spacing: 0.5px;
         }
 
-        /* Базовый стиль для закругленных стеклянных карточек/кнопок */
-        .glass-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: var(--blur-effect);
-            -webkit-backdrop-filter: var(--blur-effect);
+        /* Карточки с закруглением 20px */
+        .card {
+            background-color: var(--card-bg);
             border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            border: 1px solid #262936;
+            margin-bottom: 10px;
             box-sizing: border-box;
         }
 
-        /* Стили для кнопок-ссылок при наведении */
-        a.glass-card:hover {
-            transform: translateY(-3px) scale(1.01);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        .card-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid #262936;
+            background-color: #0a0b10;
         }
 
-        /* Иконки внутри кнопок */
-        .icon-wrapper {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
+        /* Центрирование для логотипа Яндекса */
+        .yandex-logo-box {
+            width: 100%;
+            height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            flex-shrink: 0;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #fff;
+            border-bottom: 1px solid #262936;
         }
 
-        .icon-wrapper img {
-            width: 32px;
-            height: 32px;
+        .yandex-logo-box img {
+            height: 140px;
             object-fit: contain;
         }
 
-        .card-text h3 {
-            margin: 0 0 4px 0;
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
             font-size: 16px;
             font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .card-text p {
-            margin: 0;
-            font-size: 13px;
+        .version-badge {
+            font-size: 11px;
+            background-color: #262936;
+            padding: 3px 8px;
+            border-radius: 6px;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        .version-badge.beta {
+            color: #f59e0b;
+        }
+
+        .card-content p {
             color: var(--text-muted);
-            line-height: 1.4;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
 
-        /* Разноцветные неоновые свечения с левой стороны для красоты */
-        .border-blue { border-left: 4px solid var(--color-blue); }
-        .border-cyan { border-left: 4px solid var(--color-cyan); }
-        .border-purple { border-left: 4px solid var(--color-purple); }
-        .border-pink { border-left: 4px solid var(--color-pink); }
-        .border-orange { border-left: 4px solid var(--color-orange); }
-
-        /* Специальный блок для кошачьих новостей */
-        .cat-box {
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.05), rgba(236, 72, 153, 0.03));
-            border-left: 4px solid var(--color-orange);
-        }
-
-        /* Стильный блок анонсов */
-        .announcement-box {
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), rgba(6, 182, 212, 0.03));
-            border-left: 4px solid var(--color-green);
-        }
-
-        .announcement-box .icon-wrapper {
-            color: var(--color-green);
-        }
-
-        /* Контейнер для встроенного виджета Telegram */
-        .tg-widget-container {
+        /* Кнопки Скачать */
+        .btn {
+            display: block;
             width: 100%;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            padding: 12px;
+            text-align: center;
+            background-color: var(--accent-green);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: 15px;
+            transition: background 0.2s;
         }
+
+        .btn:hover {
+            background-color: #16a34a;
+        }
+
+        .btn.disabled {
+            background-color: #2d3142;
+            color: #6b7280;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Специальные карточки для Кошки и Анонсов */
+        .card.cat-card { border-left: 4px solid var(--accent-orange); }
+        .card.announcement-card { border-left: 4px solid var(--accent-green); }
 
         footer {
-            margin-top: auto;
-            padding: 25px;
-            color: rgba(255, 255, 255, 0.2);
+            text-align: center;
+            padding: 30px;
+            color: #4b5563;
             font-size: 12px;
             font-weight: 500;
-            letter-spacing: 0.5px;
+            margin-top: auto;
+            width: 100%;
+            border-top: 1px solid #262936;
+            background-color: var(--nav-bg);
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="brand">Freliz Official</div>
-        <div class="lang-switcher">
-            <span class="active">RU</span>
-            <span>UK</span>
-            <span>EN</span>
-        </div>
-    </header>
-
-    <div class="main-layout">
-        
-        <div class="left-column">
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-brand">Freliz Official</a>
             
-            <a href="#builds-info" class="glass-card border-blue">
-                <div class="icon-wrapper" style="color: var(--color-blue);">💿</div>
-                <div class="card-text">
-                    <h3>Сборки Фрелиза</h3>
-                    <p>Кастомные и легковесные оптимизированные ISO-образы систем.</p>
-                </div>
-            </a>
+            <div class="nav-menu">
+                <a href="#cat-news">Про кошку</a>
+                <a href="#programs">Программы</a>
+                <a href="#builds">Сборки</a>
+                <a href="https://t.me/frelzsborka" target="_blank" class="btn-tg">Telegram</a>
+                <a href="http://googleusercontent.com/youtube.com/3" target="_blank" class="btn-yt">YouTube</a>
+                <a href="https://www.tiktok.com/@fluxionnew?_r=1&_t=ZS-96OYTNaANUa" target="_blank" class="btn-tt">TikTok</a>
+            </div>
 
-            <a href="https://t.me/frelzsborka" target="_blank" class="glass-card border-purple">
-                <div class="icon-wrapper">
+            <div class="lang-switcher">
+                <span class="active">RU</span>
+                <span>UK</span>
+                <span>EN</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="welcome-section">
+        <h1>Добро пожаловать!</h1>
+        <p>Это официальный сайт-хаб моих утилит и проектов. Здесь собраны актуальные программы для настройки операционной системы и информация о будущих сборках.</p>
+    </div>
+
+    <div class="main-content">
+
+        <div id="cat-news">
+            <div class="section-title">Актуальные новости</div>
+            
+            <div class="card cat-card">
+                <div class="card-content">
+                    <h3>🐾 Про мою кошку</h3>
+                    <p>Моя любимая кошка Пумочка всегда сидит рядом на столе или на коленях, когда я за компьютером. Она меня очень сильно любит! 🐱</p>
+                </div>
+            </div>
+
+            <div class="card announcement-card">
+                <div class="card-content">
+                    <h3>📢 Анонсы</h3>
+                    <p>Сейчас я активно чиню и довожу до ума свои программы. А кастомные легковесные сборки Windows планируются ориентировочно <strong>где-то летом</strong>!</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="programs">
+            <div class="section-title">Проги от Фрелиза</div>
+
+            <div class="card">
+                <div class="yandex-logo-box">
                     <img src="32398.jpg" alt="FrelizBlock">
                 </div>
-                <div class="card-text">
-                    <h3>Проги от Фрелиза</h3>
-                    <p>FrelizBlock (Блокиратор Яндекса), AnimeFlash, FluxionTweaker.</p>
+                <div class="card-content">
+                    <h3>Блокиратор Яндекса <span class="version-badge">v1.0</span></h3>
+                    <p>Утилита для полной блокировки процессов, автоматических установщиков и скрытой телеметрии Яндекса в системе через глубокую перенастройку системного реестра Windows.</p>
+                    <a href="ССЫЛКА_НА_БЛОКИРАТОР.EXE" class="btn" download>Скачать</a>
                 </div>
-            </a>
+            </div>
 
-            <a href="https://t.me/frelzsborka" target="_blank" class="glass-card border-cyan">
-                <div class="icon-wrapper" style="color: var(--color-cyan);">✈️</div>
-                <div class="card-text">
-                    <h3>Телеграмм канал</h3>
-                    <p>Официальное сообщество, обсуждения и апдейты софта.</p>
+            <div class="card">
+                <img src="32391.jpg" alt="AnimeFlash v1.0" class="card-image">
+                <div class="card-content">
+                    <h3>AnimeFlash <span class="version-badge">v1.0</span></h3>
+                    <p>Интересный проект, связанный с аниме тематикой. Быстрый, легкий и удобный софт для записи ISO-образов на флешки. Твой личный стильный флешер в фиолетово-розовых тонах — лучше чем Rufus!</p>
+                    <a href="ССЫЛКА_НА_ANIMEFLASH.EXE" class="btn" download>Скачать</a>
                 </div>
-            </a>
+            </div>
 
-            <a href="https://www.tiktok.com/@fluxionnew?_r=1&_t=ZS-96OYTNaANUa" target="_blank" class="glass-card border-pink">
-                <div class="icon-wrapper" style="color: var(--color-pink);">🎵</div>
-                <div class="card-text">
-                    <h3>Тикток аккаунт</h3>
-                    <p>Короткие видео, эдиты и демонстрация работы твикеров.</p>
+            <div class="card">
+                <img src="32395.jpg" alt="FluxionTweaker v3.0" class="card-image">
+                <div class="card-content">
+                    <h3>FluxionTweaker <span class="version-badge beta">v3.0 Beta</span></h3>
+                    <p>Короче я рукожоп и я не смог сделать жидкое стекло. Программа пока на бета тесте у меня, и у меня слетела винда для того чтобы доделать🫪 я хз. Но задумка топовая: макс FPS, отключение лишних служб, чистка телеметрии и настройка Windows на максимальное быстродействие.</p>
+                    <a href="#" class="btn disabled">В разработке (Слетела винда 🫪)</a>
                 </div>
-            </a>
-
-            <a href="http://googleusercontent.com/youtube.com/2" target="_blank" class="glass-card border-orange" style="border-left-color: #ef4444;">
-                <div class="icon-wrapper" style="color: #ef4444;">▶️</div>
-                <div class="card-text">
-                    <h3>YouTube канал</h3>
-                    <p>Техноблогинг, подробные гайды и обзоры оптимизаций.</p>
-                </div>
-            </a>
-
+            </div>
         </div>
 
-        <div class="right-column">
+        <div id="builds">
+            <div class="section-title">Сборки Фрелиза</div>
             
-            <div class="glass-card cat-box">
-                <div class="icon-wrapper" style="color: var(--color-orange);">🐾</div>
-                <div class="card-text">
-                    <h3>Актуалочка про кошку</h3>
-                    <p>Моя любимая кошка Пумочка всегда сидит рядом, когда я за компом. Она меня очень сильно любит! 🐱</p>
+            <div class="card">
+                <div class="card-content">
+                    <h3>⚙️ Кастомные сборки Windows</h3>
+                    <p>Мои будущие облегченные сборки Windows для слабых ПК, полностью оптимизированные под максимальный FPS в играх и стабильный отклик системы без лагов.</p>
+                    <a href="#" class="btn disabled">Скоро появится (Летом)</a>
                 </div>
             </div>
-
-            <div id="builds-info" class="glass-card announcement-box">
-                <div class="icon-wrapper">📢</div>
-                <div class="card-text">
-                    <h3>Анонсы</h3>
-                    <p>Сейчас я активно чиню и довожу до ума свои программы (FluxionTweaker и AnimeFlash). А кастомные сборки Windows планируются ориентировочно <strong>где-то летом</strong>!</p>
-                </div>
-            </div>
-
-            <div class="tg-widget-container">
-                <script async src="https://telegram.org/js/telegram-widget.js?22" 
-                        data-telegram-post="frelzsborka/1" 
-                        data-width="100%" 
-                        data-userpic="true" 
-                        data-dark="1" 
-                        data-dark-color="3b82f6">
-                </script>
-            </div>
-
         </div>
 
     </div>
 
     <footer>
-        &copy; 2026 Freliz Official. Все права защищены.
+        &copy; 2026 Freliz Official — Все права защищены.
     </footer>
 
 </body>
-</html>
+            </html>
+            
