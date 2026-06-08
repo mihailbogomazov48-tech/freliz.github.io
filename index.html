@@ -225,10 +225,16 @@
         .sub-card-body h4 { margin: 0 0 8px 0; font-size: 15px; display: flex; justify-content: space-between; }
         .sub-card-body p { margin: 0 0 15px 0; color: var(--text-muted); font-size: 13px; line-height: 1.4; }
 
+        /* Контейнер для двух кнопок */
+        .btn-container {
+            display: flex;
+            gap: 10px;
+        }
+
         /* Кнопки скачивания */
         .btn-download {
             display: block;
-            width: 100%;
+            flex: 1;
             padding: 10px;
             text-align: center;
             background-color: var(--theme-color);
@@ -315,12 +321,12 @@
 
         <div class="info-card">
             <h3 id="cat-title">🐾 Про мою кошку</h3>
-            <p id="cat-desc">Моя любимая кошка Пумочка всегда сидит рядом на столе или на коленях, когда я занимаюсь разработкой софта. Она меня очень сильно любит! 🐱</p>
+            <p id="cat-desc">Моя любимая кошка Пумочка всегда сидит рядом на столе или на коленях, когда я занимаюсь разработкой. Она меня очень любит! 🐱</p>
         </div>
 
         <div class="info-card">
             <h3 id="ann-title">📢 Анонсы</h3>
-            <p id="ann-desc">Сейчас я активно чиню и довожу до ума свои программы. А кастомные легковесные операционные системы планируются ориентировочно где-то летом!</p>
+            <p id="ann-desc">Сейчас я активно чиню и довожу до ума свои программы. Кастомные легковесные операционные системы планируются на летний период!</p>
         </div>
 
         <div class="accordion-item">
@@ -344,8 +350,8 @@
                         <img src="32391.jpg" alt="AnimeFlash v1.0" class="sub-card-img">
                         <div class="sub-card-body">
                             <h4>AnimeFlash <span>v1.0</span></h4>
-                            <p id="desc-flash">Быстрый, легкий и стильный софт для записи ISO-образов систем на USB-накопители. Красивое аниме оформление в фиолетово-розовых тонах.</p>
-                            <a href="https://github.com/mihailbogomazov48-tech/Anime-Burning-a-Windows-image-by-Fluxion-Team/blob/main/AnimeFlash.zip" class="btn-download" download>Скачать AnimeFlash.zip</a>
+                            <p id="desc-flash">Быстрый, легкий и стильный софт для записи ISO-образов систем на USB-накопители. Красивое аниме оформление с фиолетовыми и розовыми оттенками.</p>
+                            <a href="https://github.com/mihailbogomazov48-tech/Anime-Burning-a-Windows-image-by-Fluxion-Team/blob/main/AnimeFlash.zip" class="btn-download" download>Скачать AnimeFlash</a>
                         </div>
                     </div>
 
@@ -353,8 +359,19 @@
                         <img src="32395.jpg" alt="FluxionTweaker v3.0" class="card-image sub-card-img">
                         <div class="sub-card-body">
                             <h4>FluxionTweaker <span>v3.0 Beta</span></h4>
-                            <p id="desc-tweak">Максимальный FPS, оптимизация системных служб, чистка накопителей и телеметрии. Проект временно приостановлен из-за слёта винды 🫪</p>
+                            <p id="desc-tweak">Максимальный FPS, оптимизация системных служб, чистка накопителей и телеметрии. Проект временно приостановлен из-за краха ОС 🫪</p>
                             <a href="#" class="btn-download disabled">В разработке</a>
+                        </div>
+                    </div>
+
+                    <div class="sub-card">
+                        <div class="sub-card-body">
+                            <h4>FrelizGDPS <span>v1.0</span></h4>
+                            <p id="desc-gdps">Улучшенный GDPS сервер для игроков Geometry Dash. Множество уровней, кастомный контент и свежие функции для лучшего игрового опыта.</p>
+                            <div class="btn-container">
+                                <a href="#" class="btn-download disabled">Mobile</a>
+                                <a href="#" class="btn-download disabled">PC</a>
+                            </div>
                         </div>
                     </div>
 
@@ -419,22 +436,24 @@
         // Базовый перевод для демонстрации разных языков
         const langData = {
             RU: {
-                catT: "🐾 Про мою кошку", catD: "Моя любимая кошка Пумочка всегда сидит рядом на столе или на коленях, когда я занимаюсь разработкой софта. Она меня очень сильно любит! 🐱",
-                annT: "📢 Анонсы", annD: "Сейчас я активно чиню и довожу до ума свои программы. А кастомные легковесные операционные системы планируются ориентировочно где-то летом!",
+                catT: "🐾 Про мою кошку", catD: "Моя любимая кошка Пумочка всегда сидит рядом на столе или на коленях, когда я занимаюсь разработкой. Она меня очень любит! 🐱",
+                annT: "📢 Анонсы", annD: "Сейчас я активно чиню и довожу до ума свои программы. Кастомные легковесные операционные системы планируются на летний период!",
                 btP: "🛠️ Программы от Фрелиза", btB: "💿 Сборки от Фрелиза",
                 dB: "Утилита для полной блокировки служб, фоновых процессов и автоматических установщиков Яндекса в операционной системе Windows.",
-                dF: "Быстрый, легкий и стильный софт для записи ISO-образов систем на USB-накопители. Красивое аниме оформление в фиолетово-розовых тонах.",
-                dT: "Максимальный FPS, оптимизация системных служб, чистка накопителей и телеметрии. Проект временно приостановлен из-за слёта винды 🫪",
-                dO: "Будущие кастомные, вырезанные и облегченные сборки Windows для слабых компьютеров, настроенные на максимальную производительность в играх."
+                dF: "Быстрый, легкий и стильный софт для записи ISO-образов систем на USB-накопители. Красивое аниме оформление с фиолетовыми и розовыми оттенками.",
+                dT: "Максимальный FPS, оптимизация системных служб, чистка накопителей и телеметрии. Проект временно приостановлен из-за краха ОС 🫪",
+                dO: "Будущие кастомные, вырезанные и облегченные сборки Windows для слабых компьютеров, настроенные на максимальную производительность в играх.",
+                dG: "Улучшенный GDPS сервер для игроков Geometry Dash. Множество уровней, кастомный контент и свежие функции для лучшего игрового опыта."
             },
             UK: {
-                catT: "🐾 Про мою кішку", catD: "Моя улюблена кішка Пумочка завжди сидить поруч на столі або на колінах, коли я займаюся розробкою софту. Вона мене дуже сильно любить! 🐱",
-                annT: "📢 Анонси", annD: "Зараз я активно лагоджу і доводжу до ладу свої програми. А кастомні легковагі операційні системи плануються орієнтовно десь влітку!",
+                catT: "🐾 Про мою кішку", catD: "Моя улюблена кішка Пумочка завжди сидить поруч на столі або на колінах, коли я займаюсь розробкою. Вона мене дуже любить! 🐱",
+                annT: "📢 Анонси", annD: "Зараз я активно лагоджу і доводжу до ладу свої програми. Кастомні легковагі операційні системи плануються на літній період!",
                 btP: "🛠️ Програми від Фреліза", btB: "💿 Збірки від Фреліза",
                 dB: "Утиліта для повного блокування служб, фонових процесів та автоматичних установників Яндекса в операційній системі Windows.",
-                dF: "Швидкий, легкий і стильний софт для запису ISO-образів систем на USB-накопичувачі. Красиве аніме оформлення у фіолетово-рожевих тонах.",
-                dT: "Максимальний FPS, оптимізація системних служб, чищення накопичувачів та телеметрії. Проєкт тимчасово призупинено через зліт вінди 🫪",
-                dO: "Майбутні кастомні, вирізані та полегшені збірки Windows для слабких комп'ютерів, налаштовані на максимальну продуктивність в іграх."
+                dF: "Швидкий, легкий і стильний софт для запису ISO-образів систем на USB-накопичувачі. Красиве аніме оформлення з фіолетовими та рожевими відтінками.",
+                dT: "Максимальний FPS, оптимізація системних служб, чищення накопичувачів та телеметрії. Проєкт тимчасово припинений через крах ОС 🫪",
+                dO: "Майбутні кастомні, вирізані та полегшені збірки Windows для слабких комп'ютерів, налаштовані на максимальну продуктивність у іграх.",
+                dG: "Поліпшений GDPS сервер для гравців Geometry Dash. Безліч рівнів, кастомний контент і свіжі функції для кращого ігрового досвіду."
             },
             EN: {
                 catT: "🐾 About my cat", catD: "My beloved cat Pumochka always sits nearby on the table or on my lap when I am developing software. She loves me very much! 🐱",
@@ -443,7 +462,8 @@
                 dB: "A utility designed to fully block Yandex services, background processes, and automatic installers within the Windows operating system.",
                 dF: "Fast, lightweight, and stylish software for burning ISO images to USB drives. Features a beautiful anime theme with purple and pink accents.",
                 dT: "Maximum FPS, system services optimization, drive cleaning, and telemetry removal. Project is temporarily paused due to an OS crash 🫪",
-                dO: "Future custom, debloated, and lightweight Windows builds tailored for low-end PCs to achieve maximum gaming performance."
+                dO: "Future custom, debloated, and lightweight Windows builds tailored for low-end PCs to achieve maximum gaming performance.",
+                dG: "An enhanced GDPS server for Geometry Dash players. Lots of levels, custom content, and fresh features for a better gaming experience."
             }
         };
 
@@ -462,6 +482,7 @@
             document.getElementById('desc-flash').innerText = langData[lang].dF;
             document.getElementById('desc-tweak').innerText = langData[lang].dT;
             document.getElementById('desc-os').innerText = langData[lang].dO;
+            document.getElementById('desc-gdps').innerText = langData[lang].dG;
         }
     </script>
 
