@@ -14,7 +14,6 @@
             background-color: #0e0b16;
             color: #ffffff;
             font-family: 'Inter', sans-serif;
-            /* Плавное изменение отступов в зависимости от размера экрана */
             padding: 20px 20px 100px 20px; 
             display: flex;
             flex-direction: column;
@@ -28,7 +27,6 @@
         /* --- АВТОМАТИЧЕСКИЙ КОНТЕЙНЕР (АДАПТАЦИЯ ПОД ЛЮБОЙ ЭКРАН) --- */
         .container {
             width: 100%;
-            /* Если экран шире 800px (ПК, ноутбуки), контент будет по центру и не растянется шире 700px */
             max-width: 700px; 
             margin: 0 auto;
         }
@@ -83,7 +81,7 @@
 
         /* --- ГЛАВНАЯ --- */
         .hero-title {
-            font-size: clamp(24px, 5vw, 36px); /* Автоматически меняет размер шрифта */
+            font-size: clamp(24px, 5vw, 36px);
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 15px;
@@ -186,7 +184,7 @@
 
         .apps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Автоматическая сетка */
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
             margin-bottom: 25px;
         }
@@ -206,7 +204,7 @@
         .app-image {
             width: 100%;
             height: auto;
-            aspect-ratio: 16/9; /* Сохраняет пропорции картинки */
+            aspect-ratio: 16/9;
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 10px;
@@ -342,7 +340,7 @@
             color: #a071f5;
         }
 
-        /* --- НИЖНЯЯ ПАНЕЛЬ НАВИГАЦИИ (АДАПТИВНАЯ) --- */
+        /* --- НИЖНЯЯ ПАНЕЛЬ НАВИГАЦИИ --- */
         .bottom-nav {
             position: fixed;
             bottom: 20px;
@@ -359,7 +357,7 @@
             gap: 5px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.8);
             max-width: 95%;
-            width: 500px; /* На ПК панель будет шире, но аккуратной */
+            width: 500px;
         }
         .nav-item {
             cursor: pointer;
@@ -386,7 +384,6 @@
             fill: currentColor;
         }
 
-        /* Автоматическое изменение сетки программ на ПК */
         @media (min-width: 600px) {
             .apps-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -398,7 +395,6 @@
 
     <div class="container">
         
-        <!-- Шапка -->
         <header>
             <div class="logo-area">
                 <div class="logo-icon">F</div>
@@ -406,7 +402,6 @@
             </div>
         </header>
 
-        <!-- ================= СТРАНИЦА 1: ГЛАВНАЯ ================= -->
         <div id="page-home" class="page active">
             <h1 class="hero-title">Добро пожаловать на <span>Freliz Website</span>!</h1>
             <p class="hero-desc">
@@ -432,7 +427,7 @@
                     </svg>
                     Telegram
                 </a>
-                <a href="https://youtu.be/ZQRgPRFCKdE" target="_blank" class="social-btn sb-yt">
+                <a href="https://youtu.be/QDnCx9ksGV4?si=S_3uEe_5G3_74T1n" target="_blank" class="social-btn sb-yt">
                     <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px; height:20px;">
                         <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                     </svg>
@@ -442,14 +437,13 @@
 
             <div class="video-block">
                 <h4>Самое актуальное видео на YouTube</h4>
-                <a href="https://youtu.be/ZQRgPRFCKdE" target="_blank" class="video-card">
-                    <img src="https://img.youtube.com/vi/ZQRgPRFCKdE/maxresdefault.jpg" alt="Video Preview" class="video-thumb">
+                <a href="https://youtu.be/QDnCx9ksGV4?si=S_3uEe_5G3_74T1n" target="_blank" class="video-card">
+                    <img src="https://img.youtube.com/vi/QDnCx9ksGV4/maxresdefault.jpg" alt="Video Preview" class="video-thumb">
                     <div class="video-caption">Смотреть актуальное видео</div>
                 </a>
             </div>
         </div>
 
-        <!-- ================= СТРАНИЦА 2: ПРОГРАММЫ ================= -->
         <div id="page-programs" class="page">
             <h3 class="section-title">Мои программы</h3>
             
@@ -470,7 +464,6 @@
             </div>
         </div>
 
-        <!-- ================= СТРАНИЦА 3: СБОРКИ ================= -->
         <div id="page-builds" class="page">
             <h3 class="section-title">Сборки и ISO</h3>
             
@@ -491,7 +484,6 @@
             </div>
         </div>
 
-        <!-- ================= СТРАНИЦА 4: ОБНОВЛЕНИЯ ================= -->
         <div id="page-updates" class="page">
             <h3 class="section-title">Обновления и требования</h3>
             
@@ -534,7 +526,6 @@
 
     </div>
 
-    <!-- ================= НИЖНЯЯ НАВИГАЦИЯ ================= -->
     <div class="bottom-nav">
         <div class="nav-item active" onclick="switchPage('page-home', this)">
             <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
@@ -554,9 +545,7 @@
         </div>
     </div>
 
-    <!-- ================= JS СКРИПТЫ ================= -->
     <script>
-        // Функция переключения страниц
         function switchPage(pageId, navElement) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
@@ -569,7 +558,6 @@
             navElement.classList.add('active');
         }
 
-        // Функция для аккордеона
         function toggleAccordion(header) {
             const body = header.nextElementSibling;
             const plus = header.querySelector('.plus');
